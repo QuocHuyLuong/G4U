@@ -1,3 +1,3 @@
 window.g4uRecruitmentConfig = {
-  "googleFormUrl": "https://google.com"
+  "googleFormUrl": "https://forms.gle/WwyMsUwKRxRPWSxp6"
 };
