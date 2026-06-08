@@ -6,6 +6,7 @@
   <title>CLB Guitar G4U - Đại học Tôn Đức Thắng</title>
   <meta name="description" content="Trang web chính thức của CLB Guitar G4U - Đại học Tôn Đức Thắng. Nơi kết nối những tâm hồn yêu âm nhạc, đam mê tiếng đàn guitar, giao lưu học hỏi và lan tỏa những giai điệu cảm xúc." />
   <meta name="keywords" content="CLB Guitar G4U, G4U, Guitar TDTU, Đại học Tôn Đức Thắng, câu lạc bộ guitar, guitar sinh viên" />
+  <link rel="icon" type="image/jpeg" href="src/assets/Logo.jpg" />
   
   <!-- Hls.js for HLS streaming support -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.8/dist/hls.min.js"></script>
@@ -615,10 +616,10 @@
           <!-- Right Images Collages -->
           <div style="position: relative; width: 100%; height: 450px;" class="hero-image-container">
             <div class="glass-panel" style="position: absolute; width: 75%; height: 350px; top: 0; right: 0; overflow: hidden; border-radius: var(--radius-lg); border: 4px solid #fff; box-shadow: var(--shadow-lg); z-index: 2; transform: rotate(2deg);">
-              <img src="src/assets/anh1.jpg" alt="G4U Image 1" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="src/assets/hero/hero_primary.jpg" alt="G4U Image 1" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="glass-panel" style="position: absolute; width: 55%; height: 240px; bottom: 0; left: 0; overflow: hidden; border-radius: var(--radius-md); border: 4px solid #fff; box-shadow: var(--shadow-md); z-index: 3; transform: rotate(-4deg);">
-              <img src="src/assets/anh2.jpg" alt="G4U Image 2" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="src/assets/hero/hero_secondary.jpg" alt="G4U Image 2" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="btn-primary flex-center" style="position: absolute; width: 60px; height: 60px; border-radius: 50%; top: 50%; left: 40%; z-index: 4; box-shadow: var(--shadow-glow); animation: float-circle 4s ease-in-out infinite;">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
@@ -1408,12 +1409,12 @@
 
     function loadGalleryMetadata() {
       fetchConfigWithFallback('public/gallery/gallery.json', '/gallery/gallery.json', [
-        { id: 1, src: "src/assets/anh1.jpg", category: "perform", title: "Biểu diễn ban nhạc" },
-        { id: 2, src: "src/assets/anh2.jpg", category: "life", title: "Sinh hoạt nội bộ" },
-        { id: 3, src: "src/assets/anh4.jpg", category: "perform", title: "Đêm diễn Acoustic" },
-        { id: 4, src: "src/assets/anh5.jpg", category: "liveshow", title: "Cánh Diều Ước Mơ Liveshow Flyer" },
-        { id: 5, src: "src/assets/anh6.jpg", category: "liveshow", title: "Công bố Ban chủ nhiệm" },
-        { id: 6, src: "src/assets/anh1.jpg", category: "life", title: "Tập luyện chuyên môn" }
+        { id: 1, src: "src/assets/anh1.jpg", category: "life", title: "Tân niên 2026" },
+        { id: 2, src: "src/assets/anh2.jpg", category: "perform", title: "Show Yoko" },
+        { id: 3, src: "src/assets/anh4.jpg", category: "liveshow", title: "Live show \"Cánh diều ước mơ\"" },
+        { id: 4, src: "src/assets/S4U.jpg", category: "liveshow", title: "Live show \"S4U\"" },
+        { id: 5, src: "src/assets/Chong_hoa.jpg", category: "liveshow", title: "Live show \"Chóng Hoa\"" },
+        { id: 6, src: "src/assets/Sinh_nhat2025.jpg", category: "life", title: "Sinh nhật 2025" }
       ]).then(data => {
         if (Array.isArray(data)) {
           galleryList = data;
@@ -1469,30 +1470,30 @@
       fetchConfigWithFallback('public/events/events.json', '/events/events.json', [
         {
           title: "LIVESHOW 'CÁNH DIỀU ƯỚC MƠ'",
-          status: "Vừa diễn ra",
-          image: "src/assets/anh5.jpg",
+          status: "Nổi bật",
+          image: "src/assets/anh4.jpg",
           date: "11/05/2026",
-          location: "Hội trường 6B - Đại học Tôn Đức Thắng",
-          desc: "Đêm nhạc liveshow hoành tráng kỷ niệm chặng đường hoạt động, gửi gắm những ước mơ tuổi trẻ bay cao bay xa cùng tiếng đàn và lời ca.",
+          location: "Sảnh D-E - TDTU",
+          desc: "Đêm nhạc liveshow thiện nguyện với mong muốn lan tỏa âm nhạc và tinh thần tích cực tới mọi người",
           tagColor: "var(--color-primary)"
         },
         {
-          title: "CÔNG BỐ BCN NHIỆM KỲ 2025 - 2026",
+          title: "LIVESHOW 'S4U'",
           status: "Nổi bật",
-          image: "src/assets/anh6.jpg",
-          date: "22/11/2025",
-          location: "Đại học Tôn Đức Thắng",
-          desc: "Chính thức công bố những gương mặt tài năng sẽ dẫn dắt CLB G4U chinh phục những đỉnh cao âm nhạc mới trong nhiệm kỳ tiếp theo.",
-          tagColor: "var(--color-secondary)"
+          image: "src/assets/S4U.jpg",
+          date: "19/06/2025",
+          location: "Hội trường 6M - TDTU",
+          desc: "Liveshow thường niên nơi tất cả ban trong câu lạc bộ cùng nhau tạo ra một liveshow để lan tỏa âm nhạc tới với toàn thể sinh viên TDTU ",
+          tagColor: "var(--color-primary)"
         },
         {
-          title: "ĐÊM NHẠC ACOUSTIC THƯỜNG NIÊN",
-          status: "Sắp diễn ra",
-          image: "src/assets/anh4.jpg",
-          date: "Mỗi tối Thứ Năm hàng tuần",
-          location: "Sân sảnh tòa nhà C - TDTU",
-          desc: "Sân chơi âm nhạc mộc mạc hàng tuần dành cho tất cả các bạn sinh viên TDTU mong muốn thư giãn, thể hiện tiếng hát của bản thân.",
-          tagColor: "#f59e0b"
+          title: "LIVESHOW 'CHÓNG HOA'",
+          status: "Nổi bật",
+          image: "src/assets/Chong_hoa.jpg",
+          date: "06/12/2024",
+          location: "Hội trường 6M - TDTU",
+          desc: "Đêm nhạc thiện nguyện đầu tiên của câu lạc bộ.",
+          tagColor: "var(--color-primary)"
         }
       ]).then(data => {
         if (Array.isArray(data)) {
