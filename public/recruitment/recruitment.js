@@ -1,3 +1,3 @@
 window.g4uRecruitmentConfig = {
-  "googleFormUrl": "https://forms.gle/WwyMsUwKRxRPWSxp6"
+  "googleFormUrl": "Các bạn hãy đón chờ thông tin về đợt tuyển thành viên tiếp theo trên facebook nha!"
 };
