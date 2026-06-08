@@ -545,6 +545,40 @@
       .mobile-only { display: none !important; }
       .desktop-only { display: flex !important; }
     }
+
+    /* Merchandise Custom Styles & Detail Modal */
+    .merch-img {
+      transition: var(--transition);
+    }
+    .glass-panel-hover:hover .merch-img {
+      transform: scale(1.06);
+    }
+    .merch-hover-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(99, 58, 135, 0.4);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      z-index: 2;
+    }
+    .glass-panel-hover:hover .merch-hover-overlay {
+      opacity: 1 !important;
+    }
+    @media (max-width: 768px) {
+      .merch-modal-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .merch-modal-grid img {
+        height: 250px !important;
+        object-fit: cover !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -567,6 +601,7 @@
         <a href="#gallery" class="nav-link-item">Thư viện</a>
         <a href="#departments" class="nav-link-item">Các ban</a>
         <a href="#music-room" class="nav-link-item">G4U Studio</a>
+        <a href="#merchandise" class="nav-link-item">Merchandise</a>
         <a href="#contact" class="nav-link-item">Liên hệ</a>
         <a href="#contact" class="nav-cta-btn">Liên hệ ngay</a>
       </nav>
@@ -584,6 +619,7 @@
       <a href="#gallery" class="mobile-link">Thư viện</a>
       <a href="#departments" class="mobile-link">Các ban</a>
       <a href="#music-room" class="mobile-link">G4U Studio</a>
+      <a href="#merchandise" class="mobile-link">Merchandise</a>
       <a href="#contact" class="mobile-link">Liên hệ</a>
       <a href="#contact" class="nav-cta-btn" style="width: 100%; text-align: center; justify-content: center; margin-left: 0; margin-top: 8px;">Liên hệ ngay</a>
     </div>
@@ -1043,6 +1079,24 @@
       </div>
     </section>
 
+    <!-- MERCHANDISE SECTION -->
+    <section id="merchandise" style="background: var(--color-bg-white); padding: 100px 0;">
+      <div class="container">
+        <div class="section-header">
+          <div class="glass-panel" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: var(--radius-full); margin-bottom: 20px; border: 1px solid rgba(232, 59, 77, 0.25); background: rgba(232, 59, 77, 0.05);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span style="font-size: 0.825rem; font-weight: 700; color: var(--color-primary); font-family: var(--font-heading); letter-spacing: 0.5px;">ĐỘC QUYỀN TỪ G4U GUITAR CLUB</span>
+          </div>
+          <h2>G4U <span class="gradient-text">Merchandise</span></h2>
+          <p>Sở hữu những ấn phẩm và phụ kiện mang đậm dấu ấn và ngọn lửa đam mê của CLB Guitar G4U</p>
+        </div>
+
+        <div class="grid-2" id="merchandise-grid" style="max-width: 800px; margin: 0 auto; align-items: stretch;">
+          <!-- Dynamically loaded via Javascript -->
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT SECTION -->
     <section id="contact" style="background: var(--color-bg-base);">
       <div class="container">
@@ -1194,6 +1248,38 @@
     <img id="lightbox-img" src="" alt="Zoomed" style="max-width: 90%; max-height: 90%; border-radius: var(--radius-md); box-shadow: 0 24px 50px rgba(0,0,0,0.5); border: 4px solid white;" />
   </div>
 
+  <!-- MERCHANDISE DETAIL MODAL -->
+  <div id="merch-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20, 10, 28, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1100; align-items: center; justify-content: center; padding: 16px;">
+    <div class="glass-panel" style="position: relative; width: 100%; max-width: 720px; background: rgba(255, 255, 255, 0.95); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 50px rgba(99, 58, 135, 0.2); border: 1px solid rgba(255, 255, 255, 0.8); max-height: 90vh; display: flex; flex-direction: column;" onclick="event.stopPropagation()">
+      <!-- Close button -->
+      <button id="merch-modal-close" style="position: absolute; top: 16px; right: 16px; background: rgba(20, 10, 28, 0.05); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-text-title); transition: var(--transition); z-index: 10;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+
+      <!-- Scrollable Container -->
+      <div style="overflow-y: auto; display: flex; flex-direction: column;">
+        <div class="merch-modal-grid" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 0; align-items: stretch;">
+          <!-- Image -->
+          <div style="background: #faf5f8; display: flex; align-items: center; justify-content: center; overflow: hidden; height: 100%; min-height: 320px;">
+            <img id="merch-modal-img" src="" alt="Sản phẩm" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+          <!-- Info -->
+          <div style="padding: 36px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <div id="merch-modal-tag" style="display: inline-block; background: rgba(99, 58, 135, 0.08); color: var(--color-secondary); font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 9999px; margin-bottom: 16px; align-self: flex-start; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.5px;">
+              Ấn phẩm nội bộ
+            </div>
+            <h3 id="merch-modal-name" style="font-size: 1.4rem; color: var(--color-text-title); margin-bottom: 16px; font-weight: 800; line-height: 1.3;">Tên sản phẩm</h3>
+            <p id="merch-modal-desc" style="font-size: 0.95rem; color: var(--color-text); line-height: 1.6; margin-bottom: 32px;">Mô tả chi tiết sản phẩm.</p>
+            
+            <a href="#contact" id="merch-modal-contact-btn" class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; text-align: center;">
+              Liên hệ giao lưu
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Set Year
     document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -1326,6 +1412,33 @@
       lightbox.addEventListener('click', () => {
         lightbox.style.display = 'none';
       });
+    }
+
+    // Merchandise Modal Setup
+    const merchModal = document.getElementById('merch-modal');
+    const merchModalClose = document.getElementById('merch-modal-close');
+    const merchModalContactBtn = document.getElementById('merch-modal-contact-btn');
+    
+    if (merchModal) {
+      // Close on backdrop click
+      merchModal.addEventListener('click', () => {
+        merchModal.style.display = 'none';
+      });
+      
+      // Close on close button click
+      if (merchModalClose) {
+        merchModalClose.addEventListener('click', (e) => {
+          e.stopPropagation();
+          merchModal.style.display = 'none';
+        });
+      }
+      
+      // Close and scroll on contact button click
+      if (merchModalContactBtn) {
+        merchModalContactBtn.addEventListener('click', () => {
+          merchModal.style.display = 'none';
+        });
+      }
     }
 
     // Contact Form Simulation
@@ -1633,6 +1746,118 @@
       });
     }
 
+    // Dynamic Merchandise Logic
+    let merchList = [];
+
+    function loadMerchandiseMetadata() {
+      fetchConfigWithFallback('public/merchandise/merchandise.json', '/merchandise/merchandise.json', [
+        {
+          id: 1,
+          name: "Áo đồng phục CLB Guitar G4U",
+          tag: "Ấn phẩm nội bộ",
+          description: "Mẫu áo thun đồng phục chính thức của G4U với chất liệu cotton cao cấp, thiết kế trẻ trung, năng động mang biểu tượng đặc trưng của CLB.",
+          image: "src/assets/merchandise/Ao_5.png"
+        },
+        {
+          id: 2,
+          name: "Dây đeo Guitar / Thẻ sinh viên G4U",
+          tag: "Phụ kiện độc quyền",
+          description: "Phụ kiện dây đeo thiết kế độc quyền của G4U, sử dụng làm dây đeo thẻ sinh viên hoặc dây đeo guitar, thể hiện cá tính yêu âm nhạc ở mọi nơi.",
+          image: "src/assets/merchandise/Day_6.png"
+        }
+      ]).then(data => {
+        if (Array.isArray(data)) {
+          merchList = data;
+          renderMerchandiseUI();
+        }
+      });
+    }
+
+    function renderMerchandiseUI() {
+      const grid = document.getElementById('merchandise-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      merchList.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'glass-panel glass-panel-hover';
+        div.style.padding = '0';
+        div.style.borderRadius = 'var(--radius-lg)';
+        div.style.overflow = 'hidden';
+        div.style.display = 'flex';
+        div.style.flexDirection = 'column';
+        div.style.justifyContent = 'space-between';
+        div.style.height = '100%';
+        div.style.border = '1px solid rgba(255, 255, 255, 0.6)';
+        div.style.boxShadow = 'var(--shadow-md)';
+        div.style.position = 'relative';
+        div.style.cursor = 'pointer';
+
+        div.innerHTML = `
+          <div style="position: relative; height: 280px; overflow: hidden; background: #faf5f8; display: flex; align-items: center; justify-content: center;">
+            <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" class="merch-img" />
+            
+            <!-- Hover overlay for zoom icon -->
+            <div class="merch-hover-overlay">
+              <div style="background: #fff; color: var(--color-primary); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+            </div>
+
+            <div style="position: absolute; top: 16px; right: 16px; background: rgba(232, 59, 77, 0.9); color: #fff; padding: 6px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; font-family: var(--font-heading); display: flex; align-items: center; gap: 4px; box-shadow: 0 4px 10px rgba(232, 59, 77, 0.3); z-index: 3;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.293 8.293a2 2 0 0 0 2.828 0l7.172-7.172a2 2 0 0 0 0-2.828z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+              <span>Merch</span>
+            </div>
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; text-align: left;">
+            <div>
+              <div style="display: inline-block; background: rgba(99, 58, 135, 0.08); color: var(--color-secondary); font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 9999px; margin-bottom: 12px; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.5px;">
+                ${item.tag || 'Ấn phẩm CLB'}
+              </div>
+              <h4 style="font-size: 1.2rem; color: var(--color-text-title); margin-bottom: 12px; font-weight: 700; line-height: 1.4;">${item.name}</h4>
+              <p style="font-size: 0.9rem; color: var(--color-text-light); line-height: 1.6; margin-bottom: 24px;">${item.description}</p>
+            </div>
+            <button class="btn btn-primary btn-view-detail" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700;">Xem chi tiết sản phẩm</button>
+          </div>
+        `;
+
+        const openModal = () => {
+          const modal = document.getElementById('merch-modal');
+          const modalImg = document.getElementById('merch-modal-img');
+          const modalTag = document.getElementById('merch-modal-tag');
+          const modalName = document.getElementById('merch-modal-name');
+          const modalDesc = document.getElementById('merch-modal-desc');
+          
+          if (modal && modalImg && modalTag && modalName && modalDesc) {
+            modalImg.src = item.image;
+            modalImg.alt = item.name;
+            modalTag.textContent = item.tag || 'Ấn phẩm CLB';
+            modalName.textContent = item.name;
+            modalDesc.textContent = item.description;
+            modal.style.display = 'flex';
+          }
+        };
+
+        div.addEventListener('click', openModal);
+
+        const btnDetail = div.querySelector('.btn-view-detail');
+        if (btnDetail) {
+          btnDetail.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openModal();
+          });
+        }
+        
+        const img = div.querySelector('.merch-img');
+        if (img) {
+          div.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.06)'; });
+          div.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; });
+        }
+
+        grid.appendChild(div);
+      });
+    }
+
     // Set up filter buttons events for dynamic loading
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -1656,6 +1881,7 @@
     loadVideosMetadata();
     loadGalleryMetadata();
     loadEventsMetadata();
+    loadMerchandiseMetadata();
 
 
   </script>
