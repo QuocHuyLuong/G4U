@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Flame, Zap, Palette, Handshake } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Flame, Zap, Palette, Handshake, ZoomIn } from 'lucide-react';
 
 const CheckIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
@@ -9,6 +9,7 @@ const CheckIcon = () => (
 );
 
 export default function Departments() {
+  const [selectedDept, setSelectedDept] = useState(null);
   const departmentsData = [
     {
       id: 'chuyen-mon',
@@ -99,6 +100,7 @@ export default function Departments() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              onClick={() => setSelectedDept(dept)}
               style={{
                 background: 'var(--color-bg-white)',
                 borderRadius: 'var(--radius-lg)',
@@ -110,7 +112,8 @@ export default function Departments() {
                 flexDirection: 'column',
                 overflow: 'hidden',
                 justifyContent: 'space-between',
-                transition: 'var(--transition)'
+                transition: 'var(--transition)',
+                cursor: 'pointer'
               }}
             >
               <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -127,6 +130,28 @@ export default function Departments() {
                       transition: 'var(--transition)'
                     }}
                   />
+                  {/* Hover overlay for zoom icon */}
+                  <div 
+                    className="dept-hover-overlay"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      background: 'rgba(99, 58, 135, 0.4)',
+                      opacity: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'var(--transition)',
+                      zIndex: 2
+                    }}
+                  >
+                    <div style={{ background: '#fff', color: 'var(--color-primary)', width: '44px', height: '44px', borderRadius: '50%', display: 'flex', alignItems: 'center', justify: 'center', boxShadow: 'var(--shadow-md)' }}>
+                      <ZoomIn size={20} />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Content Body */}
@@ -199,12 +224,157 @@ export default function Departments() {
                       ))}
                     </div>
                   </div>
+                  <button 
+                    className="btn btn-primary" 
+                    style={{ width: '100%', padding: '12px 0', fontSize: '0.875rem', fontWeight: '700', marginTop: '24px' }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedDept(dept);
+                    }}
+                  >
+                    Xem chi tiết ban
+                  </button>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Department Detail Modal */}
+      <AnimatePresence>
+        {selectedDept && (
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: 'rgba(20, 10, 28, 0.6)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              zIndex: 1100,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '16px'
+            }}
+            onClick={() => setSelectedDept(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, cubicBezier: [0.16, 1, 0.3, 1] }}
+              className="glass-panel"
+              style={{
+                position: 'relative',
+                width: '100%',
+                maxWidth: '760px',
+                background: 'rgba(255, 255, 255, 0.95)',
+                borderRadius: 'var(--radius-lg)',
+                overflow: 'hidden',
+                boxShadow: '0 24px 50px rgba(99, 58, 135, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.8)',
+                maxHeight: '90vh',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button 
+                onClick={() => setSelectedDept(null)}
+                style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                  background: 'rgba(20, 10, 28, 0.05)',
+                  border: 'none',
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: 'var(--color-text-title)',
+                  transition: 'var(--transition)',
+                  zIndex: 10
+                }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+              </button>
+
+              {/* Scrollable Container */}
+              <div style={{ overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+                <div className="dept-modal-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 0, alignItems: 'stretch' }}>
+                  {/* Image */}
+                  <div style={{ background: '#faf5f8', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', height: '100%', minHeight: '320px' }}>
+                    <img src={selectedDept.image} alt={selectedDept.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  {/* Info */}
+                  <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'left' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                      <div style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '12px',
+                        background: selectedDept.gradient,
+                        color: '#fff',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: `0 8px 16px ${selectedDept.shadowColor}`,
+                        flexShrink: 0
+                      }}>
+                        {selectedDept.icon}
+                      </div>
+                      <div>
+                        <h3 style={{ fontSize: '1.4rem', color: 'var(--color-text-title)', margin: 0, fontWeight: 800 }}>{selectedDept.name}</h3>
+                        <span style={{ 
+                          fontSize: '0.85rem', 
+                          fontWeight: '700', 
+                          color: 'var(--color-accent)',
+                          fontFamily: 'var(--font-heading)',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.5px'
+                        }}>{selectedDept.subtitle}</span>
+                      </div>
+                    </div>
+
+                    <p style={{ fontSize: '0.925rem', color: 'var(--color-text)', lineHeight: '1.6', marginBottom: '24px' }}>{selectedDept.description}</p>
+                    
+                    {/* Tasks List */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
+                      {selectedDept.tasks.map((task, idx) => (
+                        <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                          <div style={{ marginTop: '3px' }}>
+                            <CheckIcon />
+                          </div>
+                          <span style={{ fontSize: '0.85rem', color: 'var(--color-text-light)', lineHeight: '1.4' }}>
+                            {task}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a 
+                      href="#contact" 
+                      onClick={() => setSelectedDept(null)}
+                      className="btn btn-primary" 
+                      style={{ width: '100%', padding: '12px 0', fontSize: '0.875rem', fontWeight: '700', textAlign: 'center' }}
+                    >
+                      Liên hệ ứng tuyển ngay
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       <style dangerouslySetInnerHTML={{__html: `
         .dept-card {
@@ -220,6 +390,18 @@ export default function Departments() {
         }
         .dept-card:hover .dept-image {
           transform: scale(1.06);
+        }
+        .dept-card:hover .dept-hover-overlay {
+          opacity: 1 !important;
+        }
+        @media (max-width: 768px) {
+          .dept-modal-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .dept-modal-grid img {
+            height: 250px !important;
+            object-fit: cover !important;
+          }
         }
       `}} />
     </section>

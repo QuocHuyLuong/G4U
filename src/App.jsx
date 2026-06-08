@@ -6,6 +6,7 @@ import Events from './components/Events';
 import Gallery from './components/Gallery';
 import Departments from './components/Departments';
 import MusicPlayer from './components/MusicPlayer';
+import Merchandise from './components/Merchandise';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -20,6 +21,7 @@ export default function App() {
         <Gallery />
         <Departments />
         <MusicPlayer />
+        <Merchandise />
         <Contact />
       </main>
       <Footer />

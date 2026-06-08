@@ -21,7 +21,8 @@ export default function Gallery() {
           { id: 3, src: '/gallery/anh4.jpg', category: 'liveshow', title: 'Live show "Cánh diều ước mơ"' },
           { id: 4, src: '/gallery/S4U.jpg', category: 'liveshow', title: 'Live show "S4U"' },
           { id: 5, src: '/gallery/Chong_hoa.jpg', category: 'liveshow', title: 'Live show "Chóng Hoa"' },
-          { id: 6, src: '/gallery/Sinh_nhat2025.jpg', category: 'life', title: 'Sinh nhật 2025' }
+          { id: 6, src: '/gallery/Sinh_nhat2025.jpg', category: 'life', title: 'Sinh nhật 2025' },
+          { id: 7, src: '/gallery/Show_TV.jpg', category: 'perform', title: 'Show giáng sinh tại thư viện TDTU' }
         ]);
       });
   }, []);

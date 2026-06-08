@@ -5,18 +5,52 @@ import { Menu, X } from 'lucide-react';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
+      
+      // Hide on scroll down, show on scroll up (specifically for mobile browsers)
+      if (window.innerWidth <= 768) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsVisible(false);
+          setIsMobileMenuOpen(false);
+        } else {
+          setIsVisible(true);
+        }
+      } else {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
+
+  // Click outside to close mobile drawer
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const headerEl = document.getElementById('site-header');
+      if (headerEl && !headerEl.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    if (isMobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { label: 'Giới thiệu', href: '#about' },
@@ -24,13 +58,14 @@ export default function Header() {
     { label: 'Thư viện', href: '#gallery' },
     { label: 'Các ban', href: '#departments' },
     { label: 'G4U Studio', href: '#music-room' },
+    { label: 'Merchandise', href: '#merchandise' },
     { label: 'Liên hệ', href: '#contact' },
   ];
 
   return (
     <header 
       id="site-header"
-      className={isScrolled ? 'scrolled' : ''}
+      className={`${isScrolled ? 'scrolled' : ''} ${isVisible ? '' : 'nav-hidden'}`}
     >
       <div className="container flex-between" style={{ padding: 0 }}>
         <a href="#" className="flex-center logo-container" style={{ gap: '10px', textDecoration: 'none' }}>
@@ -122,27 +157,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontWeight: '600',
-                color: 'var(--color-text-title)',
-                padding: '12px 20px',
-                borderRadius: 'var(--radius-md)',
-                textDecoration: 'none',
-                background: 'rgba(255, 255, 255, 0.5)',
-                border: '1px solid rgba(255, 255, 255, 0.4)',
-                transition: 'var(--transition)'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = 'rgba(232, 59, 77, 0.05)';
-                e.target.style.color = 'var(--color-primary)';
-                e.target.style.paddingLeft = '24px';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = 'rgba(255, 255, 255, 0.5)';
-                e.target.style.color = 'var(--color-text-title)';
-                e.target.style.paddingLeft = '20px';
-              }}
+              className="mobile-link"
             >
               {link.label}
             </a>
@@ -183,6 +198,10 @@ export default function Header() {
           border: 1px solid rgba(255, 255, 255, 0.6);
           box-shadow: 0 12px 40px -10px rgba(99, 58, 135, 0.18);
           padding: 8px 24px !important;
+        }
+        #site-header.nav-hidden {
+          transform: translate(-50%, -120px) !important;
+          opacity: 0;
         }
         .nav-link-item {
           position: relative;
@@ -250,19 +269,42 @@ export default function Header() {
         }
         .mobile-menu-drawer {
           position: absolute;
-          top: calc(100% + 10px);
-          left: 0;
+          top: calc(100% + 8px);
           right: 0;
-          background: rgba(255, 255, 255, 0.96);
+          left: auto;
+          width: 220px;
+          background: rgba(255, 255, 255, 0.98);
           backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           border: 1px solid rgba(255, 255, 255, 0.6);
-          border-radius: 24px;
-          padding: 24px;
-          box-shadow: 0 20px 48px -10px rgba(99, 58, 135, 0.15);
+          border-radius: 20px;
+          padding: 16px;
+          box-shadow: 0 10px 30px rgba(99, 58, 135, 0.12);
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 6px;
           animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          z-index: 1001;
+        }
+        .mobile-link {
+          font-family: var(--font-heading);
+          font-weight: 600;
+          font-size: 0.95rem;
+          color: var(--color-text-title) !important;
+          padding: 10px 16px;
+          border-radius: 12px;
+          text-decoration: none;
+          background: transparent;
+          border: none;
+          transition: all 0.2s ease;
+          display: block;
+          text-align: left;
+          width: 100%;
+        }
+        .mobile-link:hover {
+          background: rgba(232, 59, 77, 0.05) !important;
+          color: var(--color-primary) !important;
+          padding-left: 20px !important;
         }
         @keyframes slideDown {
           from {

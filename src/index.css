@@ -374,4 +374,10 @@ textarea.form-control {
     gap: 16px;
     text-align: center;
   }
+  #hero {
+    padding-top: 140px !important;
+    min-height: auto !important;
+    display: block !important;
+    text-align: center;
+  }
 }
