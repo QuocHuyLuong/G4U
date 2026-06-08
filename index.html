@@ -499,9 +499,6 @@
     .dept-card:hover .dept-icon-box {
       transform: scale(1.1) rotate(4deg);
     }
-    .dept-card:hover .dept-image {
-      transform: scale(1.06);
-    }
 
     /* Playlist items */
     .playlist-item.active {
@@ -864,16 +861,10 @@
         <div class="grid-2" style="max-width: 1000px; margin: 0 auto; gap: 32px; alignItems: stretch;">
           
           <!-- Ban Chuyen Mon -->
-          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition); cursor: pointer;" onclick="openDeptModal('chuyen-mon');">
+          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition);">
             <div style="display: flex; flex-direction: column; height: 100%;">
               <div style="position: relative; height: 220px; overflow: hidden; width: 100%;">
                 <img src="public/departments/chuyen_mon.jpg" alt="Ban Chuyên môn" class="dept-image" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" />
-                <!-- Hover overlay for zoom icon -->
-                <div class="dept-hover-overlay">
-                  <div style="background: #fff; color: var(--color-primary); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                  </div>
-                </div>
               </div>
               <div style="padding: 32px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
                 <div>
@@ -910,22 +901,15 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; margin-top: 24px;" onclick="event.stopPropagation(); openDeptModal('chuyen-mon');">Xem chi tiết ban</button>
               </div>
             </div>
           </div>
 
           <!-- Ban Su Kien -->
-          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition); cursor: pointer;" onclick="openDeptModal('su-kien');">
+          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition);">
             <div style="display: flex; flex-direction: column; height: 100%;">
               <div style="position: relative; height: 220px; overflow: hidden; width: 100%;">
                 <img src="public/departments/su_kien.jpg" alt="Ban Sự kiện" class="dept-image" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" />
-                <!-- Hover overlay for zoom icon -->
-                <div class="dept-hover-overlay">
-                  <div style="background: #fff; color: var(--color-primary); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                  </div>
-                </div>
               </div>
               <div style="padding: 32px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
                 <div>
@@ -962,22 +946,15 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; margin-top: 24px;" onclick="event.stopPropagation(); openDeptModal('su-kien');">Xem chi tiết ban</button>
               </div>
             </div>
           </div>
 
           <!-- Ban Truyen Thong -->
-          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition); cursor: pointer;" onclick="openDeptModal('truyen-thong');">
+          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition);">
             <div style="display: flex; flex-direction: column; height: 100%;">
               <div style="position: relative; height: 220px; overflow: hidden; width: 100%;">
                 <img src="public/departments/truyen_thong.jpg" alt="Ban Truyền thông" class="dept-image" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" />
-                <!-- Hover overlay for zoom icon -->
-                <div class="dept-hover-overlay">
-                  <div style="background: #fff; color: var(--color-primary); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                  </div>
-                </div>
               </div>
               <div style="padding: 32px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
                 <div>
@@ -1018,22 +995,15 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; margin-top: 24px;" onclick="event.stopPropagation(); openDeptModal('truyen-thong');">Xem chi tiết ban</button>
               </div>
             </div>
           </div>
 
           <!-- Ban Doi Ngoai -->
-          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition); cursor: pointer;" onclick="openDeptModal('doi-ngoai');">
+          <div class="glass-panel dept-card" style="background: var(--color-bg-white); border-radius: var(--radius-lg); padding: 0; text-align: left; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.6); display: flex; flex-direction: column; overflow: hidden; justify-content: space-between; transition: var(--transition);">
             <div style="display: flex; flex-direction: column; height: 100%;">
               <div style="position: relative; height: 220px; overflow: hidden; width: 100%;">
                 <img src="public/departments/doi_ngoai.jpg" alt="Ban Đối ngoại" class="dept-image" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" />
-                <!-- Hover overlay for zoom icon -->
-                <div class="dept-hover-overlay">
-                  <div style="background: #fff; color: var(--color-primary); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                  </div>
-                </div>
               </div>
               <div style="padding: 32px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
                 <div>
@@ -1074,12 +1044,9 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; margin-top: 24px;" onclick="event.stopPropagation(); openDeptModal('doi-ngoai');">Xem chi tiết ban</button>
               </div>
             </div>
           </div>
-
-        </div>
       </div>
     </section>
 
@@ -1334,46 +1301,6 @@
         </div>
       </div>
     </div>
-  <!-- DEPARTMENT DETAIL MODAL -->
-  <div id="dept-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20, 10, 28, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1100; align-items: center; justify-content: center; padding: 16px;">
-    <div class="glass-panel" style="position: relative; width: 100%; max-width: 760px; background: rgba(255, 255, 255, 0.95); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 50px rgba(99, 58, 135, 0.2); border: 1px solid rgba(255, 255, 255, 0.8); max-height: 90vh; display: flex; flex-direction: column;" onclick="event.stopPropagation()">
-      <!-- Close button -->
-      <button id="dept-modal-close" style="position: absolute; top: 16px; right: 16px; background: rgba(20, 10, 28, 0.05); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-text-title); transition: var(--transition); z-index: 10;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
-      </button>
-
-      <!-- Scrollable Container -->
-      <div style="overflow-y: auto; display: flex; flex-direction: column;">
-        <!-- Large Image (Original aspect ratio / contain) -->
-        <div style="background: #140a1c; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; height: 380px;">
-          <img id="dept-modal-img" src="" alt="Ban hoạt động" style="max-width: 100%; max-height: 100%; object-fit: contain; width: auto; height: auto;" />
-        </div>
-        <!-- Info -->
-        <div style="padding: 36px; display: flex; flex-direction: column; text-align: left;">
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-            <div id="dept-modal-icon-box" style="width: 48px; height: 48px; border-radius: 12px; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <!-- Icon will be injected -->
-            </div>
-            <div>
-              <h3 id="dept-modal-name" style="font-size: 1.5rem; color: var(--color-text-title); margin: 0; font-weight: 800;">Ban hoạt động</h3>
-              <span id="dept-modal-subtitle" style="font-size: 0.875rem; font-weight: 700; color: var(--color-accent); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.5px;">Phân loại</span>
-            </div>
-          </div>
-
-          <p id="dept-modal-desc" style="font-size: 0.95rem; color: var(--color-text); line-height: 1.6; margin-bottom: 24px;">Mô tả hoạt động.</p>
-          
-          <!-- Tasks List -->
-          <div id="dept-modal-tasks" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
-            <!-- Tasks will be injected -->
-          </div>
-
-          <a href="#contact" id="dept-modal-contact-btn" class="btn btn-primary" style="width: 100%; padding: 14px 0; font-size: 0.875rem; font-weight: 700; text-align: center;">
-            Liên hệ ứng tuyển ngay
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script>
     // Set Year
@@ -1536,32 +1463,6 @@
       }
     }
 
-    // Department Modal Setup
-    const deptModal = document.getElementById('dept-modal');
-    const deptModalClose = document.getElementById('dept-modal-close');
-    const deptModalContactBtn = document.getElementById('dept-modal-contact-btn');
-    
-    if (deptModal) {
-      // Close on backdrop click
-      deptModal.addEventListener('click', () => {
-        deptModal.style.display = 'none';
-      });
-      
-      // Close on close button click
-      if (deptModalClose) {
-        deptModalClose.addEventListener('click', (e) => {
-          e.stopPropagation();
-          deptModal.style.display = 'none';
-        });
-      }
-      
-      // Close and scroll on contact button click
-      if (deptModalContactBtn) {
-        deptModalContactBtn.addEventListener('click', () => {
-          deptModal.style.display = 'none';
-        });
-      }
-    }
 
     // Contact Form Simulation
     const recruitForm = document.getElementById('recruit-form');
@@ -1869,109 +1770,6 @@
       });
     }
 
-    // Departments Detail Modal Logic
-    const departmentsData = {
-      'chuyen-mon': {
-        name: 'Ban Chuyên môn',
-        subtitle: 'Trình diễn nhạc cụ & Vocal',
-        description: 'Nơi quy tụ những ngón đàn điêu luyện (Guitar, Bass, Keyboard, Cajon...) và những giọng hát đầy nội lực. Ban chuyên môn không chỉ tuyển guitar mà còn chào đón mọi mảnh ghép trong band nhạc để tạo nên những phần trình diễn bùng nổ.',
-        image: 'public/departments/chuyen_mon.jpg',
-        gradient: 'linear-gradient(135deg, var(--color-secondary), var(--color-accent))',
-        shadowColor: 'rgba(99, 58, 135, 0.25)',
-        iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" /></svg>`,
-        tasks: [
-          'Dàn dựng, tập luyện các tiết mục hòa thanh nhạc cụ đa dạng (Guitar, Vocal, Cajon, Keyboard, Bass...) cho các sự kiện.',
-          'Giao lưu đàn hát, chia sẻ kinh nghiệm biểu diễn và kiến thức âm nhạc thực chiến giữa các thành viên.',
-          'Tổ chức sinh hoạt chuyên môn hàng tuần giúp nâng cao khả năng hòa phối band nhạc và làm chủ sân khấu.'
-        ]
-      },
-      'su-kien': {
-        name: 'Ban Sự kiện',
-        subtitle: 'Ý tưởng & Quản lý hậu cần',
-        description: 'Đội ngũ đứng sau hậu trường để hiện thực hóa những sân khấu lung linh. Phụ trách lập kế hoạch và vận hành sự kiện trơn tru.',
-        image: 'public/departments/su_kien.jpg',
-        gradient: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
-        shadowColor: 'rgba(232, 59, 77, 0.25)',
-        iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg>`,
-        tasks: [
-          'Lên ý tưởng kịch bản, viết kế hoạch và điều phối hoạt động hậu cần cho liveshow thường niên.',
-          'Thiết kế, dàn dựng sân khấu, chuẩn bị đạo cụ biểu diễn và quản lý quy trình chạy chương trình.',
-          'Quản lý hệ thống trang thiết bị kỹ thuật, nhạc cụ và phòng sinh hoạt câu lạc bộ.'
-        ]
-      },
-      'truyen-thong': {
-        name: 'Ban Truyền thông',
-        subtitle: 'Sáng tạo nội dung & Hình ảnh',
-        description: 'Những người lưu trữ khoảnh khắc và lan tỏa câu chuyện của G4U. Phụ trách thiết kế ấn phẩm và phủ sóng mạng xã hội.',
-        image: 'public/departments/truyen_thong.jpg',
-        gradient: 'linear-gradient(135deg, var(--color-primary), #f97316)',
-        shadowColor: 'rgba(232, 59, 77, 0.25)',
-        iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" /><circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /></svg>`,
-        tasks: [
-          'Quay phim, chụp ảnh lưu giữ các hoạt động, sự kiện và sản xuất các video recap biểu diễn.',
-          'Quản lý và biên tập nội dung trên các nền tảng mạng xã hội chính thức (Facebook Fanpage, Instagram, TikTok).',
-          'Thiết kế ấn phẩm truyền thông số (banner, avatar, poster) phục vụ tuyển thành viên mới và tổ chức liveshow.'
-        ]
-      },
-      'doi-ngoai': {
-        name: 'Ban Đối ngoại',
-        subtitle: 'Kết nối cộng đồng & Đối tác',
-        description: 'Cầu nối đưa hình ảnh G4U vượt ra ngoài khuôn viên trường. Phụ trách kêu gọi tài trợ và mở rộng mối quan hệ hợp tác.',
-        image: 'public/departments/doi_ngoai.jpg',
-        gradient: 'linear-gradient(135deg, #f97316, #eab308)',
-        shadowColor: 'rgba(249, 115, 22, 0.25)',
-        iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3" /><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" /><path d="m21 3 1 11h-2" /><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /><path d="M3 4h8" /></svg>`,
-        tasks: [
-          'Kết nối giao lưu nghệ thuật với các CLB, đội nhóm trong trường và các trường Đại học bạn.',
-          'Liên hệ và làm việc với các nhà tài trợ, bảo trợ truyền thông để gây quỹ hoạt động cho CLB.',
-          'Đại diện hình ảnh G4U trong các chương trình liên kết cấp khoa, trường và xã hội.'
-        ]
-      }
-    };
-
-    function openDeptModal(id) {
-      const dept = departmentsData[id];
-      if (!dept) return;
-      
-      const modal = document.getElementById('dept-modal');
-      const modalImg = document.getElementById('dept-modal-img');
-      const modalName = document.getElementById('dept-modal-name');
-      const modalSubtitle = document.getElementById('dept-modal-subtitle');
-      const modalDesc = document.getElementById('dept-modal-desc');
-      const modalIconBox = document.getElementById('dept-modal-icon-box');
-      const modalTasks = document.getElementById('dept-modal-tasks');
-      
-      if (modal && modalImg && modalName && modalSubtitle && modalDesc && modalIconBox && modalTasks) {
-        modalImg.src = dept.image;
-        modalImg.alt = dept.name;
-        modalName.textContent = dept.name;
-        modalSubtitle.textContent = dept.subtitle;
-        modalDesc.textContent = dept.description;
-        
-        // Setup icon
-        modalIconBox.innerHTML = dept.iconSvg;
-        modalIconBox.style.background = dept.gradient;
-        modalIconBox.style.boxShadow = `0 8px 16px ${dept.shadowColor}`;
-        
-        // Setup tasks
-        modalTasks.innerHTML = '';
-        dept.tasks.forEach(task => {
-          const div = document.createElement('div');
-          div.style.display = 'flex';
-          div.style.gap = '10px';
-          div.style.alignItems = 'flex-start';
-          div.innerHTML = `
-            <div style="margin-top: 3px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12" /></svg>
-            </div>
-            <span style="font-size: 0.85rem; color: var(--color-text-light); line-height: 1.4;">${task}</span>
-          `;
-          modalTasks.appendChild(div);
-        });
-        
-        modal.style.display = 'flex';
-      }
-    }
 
     // Dynamic Merchandise Logic
     let merchList = [];
