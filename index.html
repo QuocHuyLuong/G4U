@@ -1261,6 +1261,7 @@
 
       <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.85rem;">
         <span>© <span id="current-year"></span> CLB Guitar G4U - Đại học Tôn Đức Thắng. All rights reserved.</span>
+      </div>
     </div>
   </footer>
 
@@ -1318,7 +1319,8 @@
       <!-- Social Button -->
       <a href="https://www.facebook.com" target="_blank" class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; text-align: center; text-decoration: none;">Ghé thăm Fanpage Facebook</a>
     </div>
-  </div>
+  <!-- RECRUITMENT CONFIG SCRIPT FOR LOCAL file:// RUNS -->
+  <script src="public/recruitment/recruitment.js"></script>
 
   <script>
     // Set Year
@@ -1414,16 +1416,27 @@
         if (res.ok && res.headers.get('content-type')?.includes('application/json')) {
           const data = await res.json();
           // Adjust paths: prepend 'public' if path starts with '/'
-          const adjustedData = data.map(item => {
-            const newItem = { ...item };
-            for (const key in newItem) {
-              if (typeof newItem[key] === 'string' && newItem[key].startsWith('/')) {
-                newItem[key] = 'public' + newItem[key];
+          if (Array.isArray(data)) {
+            const adjustedData = data.map(item => {
+              const newItem = { ...item };
+              for (const key in newItem) {
+                if (typeof newItem[key] === 'string' && newItem[key].startsWith('/')) {
+                  newItem[key] = 'public' + newItem[key];
+                }
+              }
+              return newItem;
+            });
+            return adjustedData;
+          } else if (data && typeof data === 'object') {
+            const adjustedData = { ...data };
+            for (const key in adjustedData) {
+              if (typeof adjustedData[key] === 'string' && adjustedData[key].startsWith('/')) {
+                adjustedData[key] = 'public' + adjustedData[key];
               }
             }
-            return newItem;
-          });
-          return adjustedData;
+            return adjustedData;
+          }
+          return data;
         }
       } catch (err) {
         console.warn(`Could not load configuration from ${devUrl}, trying production path.`, err);
@@ -1485,6 +1498,10 @@
     let recruitmentUrl = "";
 
     function loadRecruitmentConfig() {
+      if (window.g4uRecruitmentConfig && window.g4uRecruitmentConfig.googleFormUrl !== undefined) {
+        recruitmentUrl = window.g4uRecruitmentConfig.googleFormUrl;
+        return;
+      }
       fetchConfigWithFallback('public/recruitment/recruitment.json', '/recruitment/recruitment.json', {
         googleFormUrl: ""
       }).then(data => {
