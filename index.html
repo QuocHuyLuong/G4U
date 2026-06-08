@@ -1344,34 +1344,32 @@
 
       <!-- Scrollable Container -->
       <div style="overflow-y: auto; display: flex; flex-direction: column;">
-        <div class="dept-modal-grid" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 0; align-items: stretch;">
-          <!-- Image -->
-          <div style="background: #faf5f8; display: flex; align-items: center; justify-content: center; overflow: hidden; height: 100%; min-height: 320px;">
-            <img id="dept-modal-img" src="" alt="Ban hoạt động" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <!-- Info -->
-          <div style="padding: 36px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
-            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-              <div id="dept-modal-icon-box" style="width: 48px; height: 48px; border-radius: 12px; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <!-- Icon will be injected -->
-              </div>
-              <div>
-                <h3 id="dept-modal-name" style="font-size: 1.4rem; color: var(--color-text-title); margin: 0; font-weight: 800;">Ban hoạt động</h3>
-                <span id="dept-modal-subtitle" style="font-size: 0.85rem; font-weight: 700; color: var(--color-accent); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.5px;">Phân loại</span>
-              </div>
+        <!-- Large Image (Original aspect ratio / contain) -->
+        <div style="background: #140a1c; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; height: 380px;">
+          <img id="dept-modal-img" src="" alt="Ban hoạt động" style="max-width: 100%; max-height: 100%; object-fit: contain; width: auto; height: auto;" />
+        </div>
+        <!-- Info -->
+        <div style="padding: 36px; display: flex; flex-direction: column; text-align: left;">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+            <div id="dept-modal-icon-box" style="width: 48px; height: 48px; border-radius: 12px; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <!-- Icon will be injected -->
             </div>
-
-            <p id="dept-modal-desc" style="font-size: 0.925rem; color: var(--color-text); line-height: 1.6; margin-bottom: 24px;">Mô tả hoạt động.</p>
-            
-            <!-- Tasks List -->
-            <div id="dept-modal-tasks" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
-              <!-- Tasks will be injected -->
+            <div>
+              <h3 id="dept-modal-name" style="font-size: 1.5rem; color: var(--color-text-title); margin: 0; font-weight: 800;">Ban hoạt động</h3>
+              <span id="dept-modal-subtitle" style="font-size: 0.875rem; font-weight: 700; color: var(--color-accent); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.5px;">Phân loại</span>
             </div>
-
-            <a href="#contact" id="dept-modal-contact-btn" class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; text-align: center;">
-              Liên hệ ứng tuyển ngay
-            </a>
           </div>
+
+          <p id="dept-modal-desc" style="font-size: 0.95rem; color: var(--color-text); line-height: 1.6; margin-bottom: 24px;">Mô tả hoạt động.</p>
+          
+          <!-- Tasks List -->
+          <div id="dept-modal-tasks" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+            <!-- Tasks will be injected -->
+          </div>
+
+          <a href="#contact" id="dept-modal-contact-btn" class="btn btn-primary" style="width: 100%; padding: 14px 0; font-size: 0.875rem; font-weight: 700; text-align: center;">
+            Liên hệ ứng tuyển ngay
+          </a>
         </div>
       </div>
     </div>

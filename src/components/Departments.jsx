@@ -309,66 +309,64 @@ export default function Departments() {
 
               {/* Scrollable Container */}
               <div style={{ overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
-                <div className="dept-modal-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 0, alignItems: 'stretch' }}>
-                  {/* Image */}
-                  <div style={{ background: '#faf5f8', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', height: '100%', minHeight: '320px' }}>
-                    <img src={selectedDept.image} alt={selectedDept.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
-                  {/* Info */}
-                  <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'left' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                      <div style={{
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: '12px',
-                        background: selectedDept.gradient,
-                        color: '#fff',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        boxShadow: `0 8px 16px ${selectedDept.shadowColor}`,
-                        flexShrink: 0
-                      }}>
-                        {selectedDept.icon}
-                      </div>
-                      <div>
-                        <h3 style={{ fontSize: '1.4rem', color: 'var(--color-text-title)', margin: 0, fontWeight: 800 }}>{selectedDept.name}</h3>
-                        <span style={{ 
-                          fontSize: '0.85rem', 
-                          fontWeight: '700', 
-                          color: 'var(--color-accent)',
-                          fontFamily: 'var(--font-heading)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.5px'
-                        }}>{selectedDept.subtitle}</span>
-                      </div>
+                {/* Large Image (Original aspect ratio / contain) */}
+                <div style={{ background: '#140a1c', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', width: '100%', height: '380px' }}>
+                  <img src={selectedDept.image} alt={selectedDept.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', width: 'auto', height: 'auto' }} />
+                </div>
+                {/* Info */}
+                <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                    <div style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '12px',
+                      background: selectedDept.gradient,
+                      color: '#fff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: `0 8px 16px ${selectedDept.shadowColor}`,
+                      flexShrink: 0
+                    }}>
+                      {selectedDept.icon}
                     </div>
+                    <div>
+                      <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-title)', margin: 0, fontWeight: 800 }}>{selectedDept.name}</h3>
+                      <span style={{ 
+                        fontSize: '0.875rem', 
+                        fontWeight: '700', 
+                        color: 'var(--color-accent)',
+                        fontFamily: 'var(--font-heading)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px'
+                      }}>{selectedDept.subtitle}</span>
+                    </div>
+                  </div>
 
-                    <p style={{ fontSize: '0.925rem', color: 'var(--color-text)', lineHeight: '1.6', marginBottom: '24px' }}>{selectedDept.description}</p>
-                    
-                    {/* Tasks List */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
-                      {selectedDept.tasks.map((task, idx) => (
-                        <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                          <div style={{ marginTop: '3px' }}>
-                            <CheckIcon />
-                          </div>
-                          <span style={{ fontSize: '0.85rem', color: 'var(--color-text-light)', lineHeight: '1.4' }}>
-                            {task}
-                          </span>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--color-text)', lineHeight: '1.6', marginBottom: '24px' }}>{selectedDept.description}</p>
+                  
+                  {/* Tasks List */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
+                    {selectedDept.tasks.map((task, idx) => (
+                      <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                        <div style={{ marginTop: '3px' }}>
+                          <CheckIcon />
                         </div>
-                      ))}
-                    </div>
-
-                    <a 
-                      href="#contact" 
-                      onClick={() => setSelectedDept(null)}
-                      className="btn btn-primary" 
-                      style={{ width: '100%', padding: '12px 0', fontSize: '0.875rem', fontWeight: '700', textAlign: 'center' }}
-                    >
-                      Liên hệ ứng tuyển ngay
-                    </a>
+                        <span style={{ fontSize: '0.85rem', color: 'var(--color-text-light)', lineHeight: '1.4' }}>
+                          {task}
+                        </span>
+                      </div>
+                    ))}
                   </div>
+
+                  <a 
+                    href="#contact" 
+                    onClick={() => setSelectedDept(null)}
+                    className="btn btn-primary" 
+                    style={{ width: '100%', padding: '14px 0', fontSize: '0.875rem', fontWeight: '700', textAlign: 'center' }}
+                  >
+                    Liên hệ ứng tuyển ngay
+                  </a>
                 </div>
               </div>
             </motion.div>

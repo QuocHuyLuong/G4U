@@ -91,6 +91,23 @@ Khi website đã chạy online, mỗi lần bạn chỉnh sửa tệp tin trên 
        - `liveshow`: Các dự án Liveshow lớn
   3. Lưu lại bằng nút **Commit changes**.
 
+### 4. Thay đổi danh sách sản phẩm Merchandise (Quà lưu niệm CLB)
+- Đường dẫn file cấu hình: `public/merchandise/merchandise.json`
+- **Cách sửa:**
+  1. Nhấp mở file `public/merchandise/merchandise.json` trên GitHub -> bấm biểu tượng **bút chì**.
+  2. Bạn có thể thêm sản phẩm mới hoặc sửa sản phẩm hiện có bằng cách thêm hoặc chỉnh sửa khối:
+     ```json
+     {
+       "id": 4,
+       "name": "Tên sản phẩm",
+       "price": "Giá bán (ví dụ: 150.000 VNĐ)",
+       "description": "Mô tả sản phẩm ngắn gọn",
+       "image": "/merchandise/ten_anh.png"
+     }
+     ```
+  3. Để tải ảnh sản phẩm mới, bạn truy cập thư mục `public/merchandise/` trên GitHub, chọn **Add file** -> **Upload files** để tải ảnh lên trước, sau đó cập nhật tên ảnh tương ứng vào trường `"image"`.
+  4. Lưu lại bằng nút **Commit changes**.
+
 ---
 
 ## ⚠️ CÁC LƯU Ý QUAN TRỌNG ĐỂ TRÁNH LỖI GIAO DIỆN
