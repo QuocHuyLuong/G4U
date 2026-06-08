@@ -418,19 +418,42 @@
     }
     .mobile-menu-drawer {
       position: absolute;
-      top: calc(100% + 10px);
-      left: 0;
+      top: calc(100% + 8px);
       right: 0;
-      background: rgba(255, 255, 255, 0.96);
+      left: auto;
+      width: 220px;
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 20px 48px -10px rgba(99, 58, 135, 0.15);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(99, 58, 135, 0.12);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
       animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      z-index: 1001;
+    }
+    .mobile-link {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-text-title) !important;
+      padding: 10px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      transition: all 0.2s ease;
+      display: block;
+      text-align: left;
+      width: 100%;
+    }
+    .mobile-link:hover {
+      background: rgba(232, 59, 77, 0.05) !important;
+      color: var(--color-primary) !important;
+      padding-left: 20px !important;
     }
     @keyframes slideDown {
       from {
@@ -551,12 +574,12 @@
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="mobile-menu-drawer mobile-only" style="display: none;">
-      <a href="#about" class="mobile-link" style="font-family: var(--font-heading); font-weight: 600; color: var(--color-text-title); padding: 12px 20px; border-radius: var(--radius-md); text-decoration: none; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.4); transition: var(--transition);">Giới thiệu</a>
-      <a href="#events" class="mobile-link" style="font-family: var(--font-heading); font-weight: 600; color: var(--color-text-title); padding: 12px 20px; border-radius: var(--radius-md); text-decoration: none; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.4); transition: var(--transition);">Sự kiện</a>
-      <a href="#gallery" class="mobile-link" style="font-family: var(--font-heading); font-weight: 600; color: var(--color-text-title); padding: 12px 20px; border-radius: var(--radius-md); text-decoration: none; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.4); transition: var(--transition);">Thư viện</a>
-      <a href="#departments" class="mobile-link" style="font-family: var(--font-heading); font-weight: 600; color: var(--color-text-title); padding: 12px 20px; border-radius: var(--radius-md); text-decoration: none; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.4); transition: var(--transition);">Các ban</a>
-      <a href="#music-room" class="mobile-link" style="font-family: var(--font-heading); font-weight: 600; color: var(--color-text-title); padding: 12px 20px; border-radius: var(--radius-md); text-decoration: none; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.4); transition: var(--transition);">G4U Studio</a>
-      <a href="#contact" class="mobile-link" style="font-family: var(--font-heading); font-weight: 600; color: var(--color-text-title); padding: 12px 20px; border-radius: var(--radius-md); text-decoration: none; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.4); transition: var(--transition);">Liên hệ</a>
+      <a href="#about" class="mobile-link">Giới thiệu</a>
+      <a href="#events" class="mobile-link">Sự kiện</a>
+      <a href="#gallery" class="mobile-link">Thư viện</a>
+      <a href="#departments" class="mobile-link">Các ban</a>
+      <a href="#music-room" class="mobile-link">G4U Studio</a>
+      <a href="#contact" class="mobile-link">Liên hệ</a>
       <a href="#contact" class="nav-cta-btn" style="width: 100%; text-align: center; justify-content: center; margin-left: 0; margin-top: 8px;">Liên hệ ngay</a>
     </div>
   </header>
@@ -1189,9 +1212,7 @@
       if (window.innerWidth <= 768) {
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
           header.classList.add('nav-hidden');
-          if (mobileMenu) {
-            mobileMenu.style.display = 'none';
-          }
+          closeMobileMenu();
         } else {
           header.classList.remove('nav-hidden');
         }
@@ -1202,20 +1223,36 @@
       lastScrollY = currentScrollY;
     }, { passive: true });
 
-    // Mobile Menu Toggle
+    // Mobile Menu Toggle with dynamic icon changes
     const mobileBtn = document.getElementById('mobile-toggle');
+    const menuSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+    const closeSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>`;
+
+    function closeMobileMenu() {
+      if (mobileMenu) {
+        mobileMenu.style.display = 'none';
+      }
+      if (mobileBtn) {
+        mobileBtn.innerHTML = menuSvg;
+      }
+    }
+
     mobileBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isVisible = mobileMenu.style.display === 'flex';
-      mobileMenu.style.display = isVisible ? 'none' : 'flex';
+      if (isVisible) {
+        mobileMenu.style.display = 'none';
+        mobileBtn.innerHTML = menuSvg;
+      } else {
+        mobileMenu.style.display = 'flex';
+        mobileBtn.innerHTML = closeSvg;
+      }
     });
     
     // Close menu when clicking outside
     document.addEventListener('click', (event) => {
       if (header && !header.contains(event.target)) {
-        if (mobileMenu) {
-          mobileMenu.style.display = 'none';
-        }
+        closeMobileMenu();
       }
     });
 
@@ -1223,9 +1260,7 @@
     const mobileLinks = document.querySelectorAll('.mobile-link, #mobile-menu .nav-cta-btn');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (mobileMenu) {
-          mobileMenu.style.display = 'none';
-        }
+        closeMobileMenu();
       });
     });
 
