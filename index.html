@@ -435,6 +435,9 @@
       animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       z-index: 1001;
     }
+    @media (min-width: 769px) {
+      .mobile-menu-drawer { display: none !important; }
+    }
     .mobile-link {
       font-family: var(--font-heading);
       font-weight: 600;
@@ -638,7 +641,7 @@
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="mobile-menu-drawer mobile-only" style="display: none;">
+    <div id="mobile-menu" class="mobile-menu-drawer" style="display: none;">
       <a href="#about" class="mobile-link">Giới thiệu</a>
       <a href="#events" class="mobile-link">Sự kiện</a>
       <a href="#gallery" class="mobile-link">Thư viện</a>
@@ -1319,6 +1322,7 @@
       <!-- Social Button -->
       <a href="https://www.facebook.com" target="_blank" class="btn btn-primary" style="width: 100%; padding: 12px 0; font-size: 0.875rem; font-weight: 700; text-align: center; text-decoration: none;">Ghé thăm Fanpage Facebook</a>
     </div>
+  </div>
   <!-- RECRUITMENT CONFIG SCRIPT FOR LOCAL file:// RUNS -->
   <script src="public/recruitment/recruitment.js"></script>
 
@@ -1511,12 +1515,18 @@
       });
     }
 
+    function isValidRecruitmentUrl(url) {
+      if (!url) return false;
+      const u = url.trim().toLowerCase();
+      return u.startsWith("http://") || u.startsWith("https://");
+    }
+
     // Recruitment Click Logic
     document.querySelectorAll('.recruitment-trigger').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         closeMobileMenu(); // close mobile menu drawer if open
-        if (recruitmentUrl && recruitmentUrl.trim() !== "") {
+        if (isValidRecruitmentUrl(recruitmentUrl)) {
           window.open(recruitmentUrl, '_blank');
         } else {
           // Show recruitment modal
@@ -1570,7 +1580,7 @@
       fetchConfigWithFallback('public/videos/videos.json', '/videos/videos.json', [
         {
           id: 1,
-          title: "Live Session: Diều Ước (Liveshow)",
+          title: "Live Session: Cánh Diều Ước Mơ (Liveshow)",
           description: "Bản trình diễn mộc mạc và giàu cảm xúc ghi hình trực tiếp tại Hội trường 6B TDTU. Phát trực tuyến qua luồng HLS Mux.",
           videoUrl: "https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8",
           date: "11/05/2026"
@@ -1706,7 +1716,7 @@
       fetchConfigWithFallback('public/gallery/gallery.json', '/gallery/gallery.json', [
         { id: 1, src: "public/gallery/anh1.jpg", category: "life", title: "Tân niên 2026" },
         { id: 2, src: "public/gallery/anh2.jpg", category: "perform", title: "Show Yoko" },
-        { id: 3, src: "public/gallery/anh4.jpg", category: "liveshow", title: "Live show \"Diều Ước\"" },
+        { id: 3, src: "public/gallery/anh4.jpg", category: "liveshow", title: "Live show \"Cánh diều ước mơ\"" },
         { id: 4, src: "public/gallery/S4U.jpg", category: "liveshow", title: "Live show \"S4U\"" },
         { id: 5, src: "public/gallery/Chong_hoa.jpg", category: "liveshow", title: "Live show \"Chóng Hoa\"" },
         { id: 6, src: "public/gallery/Sinh_nhat2025.jpg", category: "life", title: "Sinh nhật 2025" },
@@ -1765,7 +1775,7 @@
     function loadEventsMetadata() {
       fetchConfigWithFallback('public/events/events.json', '/events/events.json', [
         {
-          title: "LIVESHOW 'DIỀU ƯỚC'",
+          title: "LIVESHOW 'CÁNH DIỀU ƯỚC MƠ'",
           status: "Nổi bật",
           image: "src/assets/anh4.jpg",
           date: "11/05/2026",
